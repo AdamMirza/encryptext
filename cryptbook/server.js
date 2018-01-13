@@ -12,12 +12,13 @@ app.use(bodyParser.urlencoded({ extended: false}));
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // API location
-app.get('/api', function (req, res) {
-  res.send('GET request to the homepage')
-})
+// app.get('/api', function (req, res) {
+//   res.send('GET request to the homepage')
+// })
 
 // Send all other requests to the Angular app
-app.get('*', (req, res) => {
+app.use(require('./server/routes/api'))
+app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
@@ -28,3 +29,4 @@ app.set('port', port);
 const server = http.createServer(app);
 
 server.listen(port, () => console.log(`Running on localhost:${port}`));
+//reload(server, express);
