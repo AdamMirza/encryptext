@@ -10,10 +10,10 @@ const decrypt = require("../../modules/decrypt");
 var bodyParser = require("body-parser");
 let session = require("express-session");
 
-//use middlewares: 
+//use middlewares:
 router.use(session({
-    secret: "no hackathoners can know ", 
-    resave: false, 
+    secret: "no hackathoners can know ",
+    resave: false,
     saveUninitialized : true,
     cookie: {secure: true }
 }));
