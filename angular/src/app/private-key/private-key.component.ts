@@ -32,8 +32,6 @@ export class PrivateKeyComponent implements OnInit {
 
     let pkey = "123456789";
     let pkeyArray = pkey.split('');
-
-    if (true)
   }
 
 }
