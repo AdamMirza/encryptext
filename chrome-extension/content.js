@@ -1,14 +1,11 @@
-console.log("yo bitches");
-
 chrome.storage.onChanged.addListener(function(changes, namespace){
     console.log("changes found");
-    for (key in changes) {
-        let storageChange = changes[key]; 
-        console.log("updated storage: %s::%s", key, storageChange.newValue);
-    }
+    let newVals = changes["wrap"]["newValue"];
+    let origin = newVals["original"];
+    let text = newVals["text"];
+    document.body.innerHTML = document.body.innerHTML.replace(origin,text);
 });
 
-chrome.storage.local.get("text", function(res){
-    console.log("grabbing");
-    console.log(res);
+chrome.storage.local.get(null, function(res){
+    console.log("grabbing : "+res["text"]+" -- "+res["original"]);
 });
