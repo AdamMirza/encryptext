@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login-form',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class LoginFormComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, private http:HttpClient) { }
 
   ngOnInit() {
     console.log('hit');
@@ -20,6 +21,35 @@ export class LoginFormComponent implements OnInit {
     var username = e.target.elements[0].value;
     var password = e.target.elements[1].value;
     console.log(username,password);
+
+    // GET
+    // change URL
+    // change UserObject interface (below) to include more variables
+    this.http.get<UserObject>('https://api.github.com/users/seeschweiler').subscribe(
+      data => {
+        // Do logic in here
+        console.log("You are in the request");
+        console.log("Username: " + data.username);
+        console.log("Password: " + data.password);
+      },
+      err => {
+        console.log("Error occured.")
+      }
+    );
+
+    // POST
+    const req = this.http.post('http://jsonplaceholder.typicode.com/posts', {
+      username: 'foo',
+      password: 'bar',
+      userId: 1
+    }).subscribe(
+      res => {
+        console.log(res);
+      },
+      err => {
+        console.log("Error occured");
+      }
+    );
 
     if(username == 'admin' && password == 'admin')
       this.router.navigate(['dashboard']);
@@ -40,4 +70,9 @@ export class LoginFormComponent implements OnInit {
             console.log(JSON.stringify(error.json()));
         });*/
   }
+}
+
+interface UserObject {
+  username: string;
+  password: string;
 }
