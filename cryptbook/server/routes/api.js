@@ -132,15 +132,3 @@ router.get("/api/me",function(req,res){
 });
 
 module.exports = router;
-
-
-
-$.ajax({
-	method:'post',
-	url:'/api/messages/encrypt',
-	data:{
-    msg:'hello old friend',
-    friendPK:'-----BEGIN PGP PUBLIC KEY BLOCK-----\r\nVersion: OpenPGP.js v2.6.1\r\nComment: https://openpgpjs.org\r\n\r\nxo0EWluT1wEEAM+fZZGY98bvo+0NNMfo8Ut6t3Q6U0hx/9cIrlyTTQ/1CtEH\nRj5iFKWeiQfVivUMPO57YVoykVXSDVfyJRLc755qZHTKckjo8gVSA84ul111\n96bekkufHR2VWflnmkbJ3mn4/Ay6cf1jdxpAg4ZlnKoU/cOTbByYEt6vy/VX\nGVnhABEBAAHNHWFkYW0gPGFkYW1jb2xsaW5zNkBnbWFpbC5jb20+wrUEEAEI\nACkFAlpbk9cGCwkHCAMCCRCvsOnzbt1O6wQVCAoCAxYCAQIZAQIbAwIeAQAA\n5fcEAI7FGJ1OJuL/8qxAu22VY5rPU6B9BVe1MEemk5Q7HlPJL9BX+uj/e2Yl\niHDO4XOopV/L8BHUf5+O5uQ81St9EgG4tSrFT8t4ncoCrm1v73p9iPu5e8b7\nNjl9iNs3ItX02t8yhWaTUQ0b6MLaV7Fphlq+6hXQwDEBzeW10TXGWNqRzo0E\nWluT1wEEAIIr1ghBHCkePtqp64JuNDVE4vFlwDf0JOLjoTelU6ROJuGFksFY\nHzdU5jtetZj7i+jKVgYtShX+YJnXt7WpxvDHLCnaPEYz6qJ0E701WtAluWG+\n3VsGAtb7eRkUyLKSdVVi9C1reUhcpcCCxwpPBEhYfKAs+SsbSfu1mgdeI4GZ\nABEBAAHCnwQYAQgAEwUCWluT1wkQr7Dp827dTusCGwwAAEaHA/9iK30uIFE0\nJTVJr4t3o3PockGRzwUVeN342hBVvSC0kbDdO7YqjqMCl37vleRzawNPJFXl\n4waf2LCqhKWJji4EqyGKDfgG+yLoQiuVayxFY8EMjam7fp4BHyBpyShQkI14\nLp+u03+lmXBScL2ApFHLsTSXeXP7t2CyCHjcHsODIA==\r\n=lI0i\r\n-----END PGP PUBLIC KEYBLOCK-----\r\n\r\n'},
-	success(data){return data},
-	error(e){return e}
-})
