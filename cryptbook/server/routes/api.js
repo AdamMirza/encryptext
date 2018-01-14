@@ -5,6 +5,8 @@ var dbName = "EncrytText";
 var dbpassword = "ouwnhEPf2Vf2VfMgfQG";
 const router = express.Router();
 const keyGen = require("../../modules/keyGen");
+const encrypt = require("../../modules/encrypt");
+const decrypt = require("../../modules/decrypt");
 var bodyParser = require("body-parser");
 
 var url =
@@ -19,6 +21,7 @@ router.get("/api", function(req, res) {
     var db = db.db("EncrytText");
     var myobj = {
       Name: "Company Inc",
+      username: "test1",
       email: "Highway 37",
       public_key: "ebgwxduy",
       password: "lol",
@@ -36,7 +39,6 @@ router.get("/api", function(req, res) {
 });
 
 // Connect to the db
-
 router.get('/api/generateKey/:username/:email',async function(req, res) {
   let options = {
     'username':req.params.username,
@@ -52,6 +54,7 @@ router.get('/api/generateKey/:username/:email',async function(req, res) {
   res.send(data);
 });
 
+//return user public information
 router.get("/api/Users/:username", function(req, res) {
   let data = {
     _id: "",
@@ -84,6 +87,37 @@ router.get("/api/Users/:username", function(req, res) {
     //res.send("connected successfully to database");
   });
   //res.send(data);
+});
+
+//Encrypt a Message: make plain text a jibberish
+//requires: msg + friendName
+router.post("/api/messages/encrypt",function(req,res){
+    let friend = req.body.friendName; 
+    let friendPK = "";
+    MongoClient.connect(url, (err,db) => {
+        console.log("got in database");
+        if (err) {res.json({"error95": "problem querying server"}); return;}
+        var db  = db.db("EncryptText");
+        var query = {username : req.body.friendName}; 
+        db.collection("Users")
+          .find(query)
+          .toArray(function(err,result) {
+                if (err) { res.json({"error101": "problem querying server"}); return; }
+                console.log(result[0]);
+                friendPK = result[0].public_key; 
+                res.json({"Encrypted": encrypt(req.body.msg,friend,friendPK)});
+          });
+    });
+});
+
+//Decrypt a Message: make jibberish a plain clean text
+//requires: msg (private key in session)
+router.post("/api/messages/decrypt",function(req,res){
+    if (req.session.user){
+        res.json({"Decrypted": decrypt(req.body.msg,req.session.user.private_key)});
+    } else {
+        res.json({"error117": "problem processing decryption"});
+    }
 });
 
 module.exports = router;
