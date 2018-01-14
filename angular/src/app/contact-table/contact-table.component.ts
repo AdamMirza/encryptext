@@ -13,10 +13,6 @@ export class ContactTableComponent implements OnInit {
   ngOnInit() {
     var user = getSession();
 
-    if (user == null) {
-      throw Exception;
-    }
-
     console.log(user.user.contacts);
     for (let c of user.user.contacts) {
       this.contacts.push({
