@@ -2,5 +2,16 @@
   <header>
     Private Key
   </header>
-  <div id="pkey"></div>
+  <div *ngIf="isVisible; else visibleSecret">
+    <span *ngFor="let key of keyChar">
+      •
+    </span>
+  </div>
+  <ng-template #visibleSecret>
+    <div>
+      <span *ngFor="let keyChar of keyCharArr">
+        {{keyChar.char}}
+      </span>
+    </div>
+  </ng-template>
 </div>

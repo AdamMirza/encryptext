@@ -7,12 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrivateKeyComponent implements OnInit {
 
-  constructor() { }
+  isVisible = false;
+  keyCharArr: string[];
+
+  constructor() {
+    let stringy = "ASDFGHJKL";
+    let tempArr = stringy.split('');
+
+    for (character of tempArr) {
+      keyCharArr.push({ 'char': character });
+    }
+  }
 
   ngOnInit() {
   }
 
   togglePkey() {
+    isVisible = !isVisible;
     /* Get the private key from Mongo */
     /*var body = 'username=' + username + '&password=' + password;
     var headers = new Headers();

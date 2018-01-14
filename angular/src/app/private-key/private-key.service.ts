@@ -17,6 +17,7 @@ export class PrivateKeyService {
 
   toggle() {
     this.visible = !this.visible;
+    
   }
 
 

@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import {CommonModule} from '@angular/common';
 import { NgModule } from '@angular/core';
 
 
@@ -10,7 +11,6 @@ import { PrivateKeyComponent } from './private-key/private-key.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginFormComponent } from './login-form/login-form.component';
-import { SecondHeaderComponent } from './second-header/second-header.component';
 
 const appRoutes:Routes = [
   {
@@ -30,13 +30,13 @@ const appRoutes:Routes = [
     PrivateKeyComponent,
     DashboardComponent,
     FooterComponent,
-    LoginFormComponent,
-    SecondHeaderComponent
+    LoginFormComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
