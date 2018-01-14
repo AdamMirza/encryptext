@@ -7,6 +7,5 @@ exports.decrypt = function(msg, privateKey){
         message: openpgp.message.readArmored(msg),
         privateKeys: openpgp.key.readArmored(privateKey).keys[0]
     }
-    return openpgp.decrypt(options)
-
+    return openpgp.decrypt(options);
 }

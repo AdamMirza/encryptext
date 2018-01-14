@@ -13,6 +13,7 @@ import { FooterComponent } from './footer/footer.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { ContactTableComponent } from './contact-table/contact-table.component';
 import { EncryptMessageComponent } from './encrypt-message/encrypt-message.component';
+import { GenerateKeyComponent } from './generate-key/generate-key.component';
 
 const appRoutes:Routes = [
   {
@@ -34,7 +35,8 @@ const appRoutes:Routes = [
     FooterComponent,
     LoginFormComponent,
     ContactTableComponent,
-    EncryptMessageComponent
+    EncryptMessageComponent,
+    GenerateKeyComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

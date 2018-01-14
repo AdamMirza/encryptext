@@ -44,7 +44,7 @@ export class LoginFormComponent implements OnInit {
     );*/
 
     // POST
-    const req = this.http.post('http://localhost:3000/login', {
+    const req = this.http.post('/api/login', {
       username: username,
       password: password
     }).subscribe(

@@ -5,9 +5,9 @@ const openpgp = require("openpgp");
 exports.encrypt = function(msg, friendPK){
     const options = {
         data: msg,
-        publicKeys : openpgp.readArmored(friendPK).keys
+        publicKeys : openpgp.key.readArmored(friendPK).keys[0]
     }
-    openpgp.encrypt(options).then((cipherText)=>{
+    return openpgp.encrypt(options).then((cipherText)=>{
         return cipherText.data+"@"+friend;
     });
 }
