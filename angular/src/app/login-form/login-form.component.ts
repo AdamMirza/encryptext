@@ -46,19 +46,13 @@ export class LoginFormComponent implements OnInit {
   ).subscribe(
       res => {
         console.log('login succesful');
+        this.router.navigate(['dashboard']);
       },
       err => {
         console.log('login failed');
         console.log(err);
       }
     );
-
-    if(username == 'admin' && password == 'admin')
-    {
-
-    }
-
-
 
     /*var body = 'username=' + username + '&password=' + password;
     var headers = new Headers();

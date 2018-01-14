@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import {CommonModule} from '@angular/common';
 import { NgModule } from '@angular/core';
 
 
@@ -34,7 +35,8 @@ const appRoutes:Routes = [
   imports: [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

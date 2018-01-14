@@ -7,12 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrivateKeyComponent implements OnInit {
 
-  constructor() { }
+  isNotVisible = true;
+  keyCharArr = [];
+
+  constructor() {
+    let stringy = "ASDFGHJKL";
+    let tempArr = stringy.split('');
+
+    for (let character of tempArr) {
+      this.keyCharArr.push({ 'char': character });
+    }
+  }
 
   ngOnInit() {
   }
 
   togglePkey() {
+    this.isNotVisible = !this.isNotVisible;
     /* Get the private key from Mongo */
     /*var body = 'username=' + username + '&password=' + password;
     var headers = new Headers();
@@ -30,8 +41,8 @@ export class PrivateKeyComponent implements OnInit {
             console.log(JSON.stringify(error.json()));
         });*/
 
-    let pkey = "123456789";
-    let pkeyArray = pkey.split('');
+    //let pkey = "123456789";
+    //let pkeyArray = pkey.split('');
   }
 
 }
