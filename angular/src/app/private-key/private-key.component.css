@@ -1,8 +1,14 @@
-div {
-  padding-top: 10px;
-  padding-bottom: 10px;
+#priv-key {
+  text-align: right;
+  margin-right: 120px;
+  float: right;
+  font-size: 12pt;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 160px;
+  text-align: center;
 }
-div header {
-  color: #888;
-  font-size: 14pt;
+
+#priv-key:hover {
+  cursor: pointer;
 }

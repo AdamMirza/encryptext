@@ -55,15 +55,13 @@ export class LoginFormComponent implements OnInit {
         d.setTime(d.getTime() + (3 * 24 * 60 * 60 * 1000));
         var expires = "; expires=" + d.toUTCString();
         document.cookie = "session="+JSON.stringify(res) + expires + "; path=/"
+        this.router.navigate(['dashboard']);
       },
       err => {
         console.log('login failed');
         console.log(err);
       }
     );
-    
-
-
 
     /*var body = 'username=' + username + '&password=' + password;
     var headers = new Headers();
