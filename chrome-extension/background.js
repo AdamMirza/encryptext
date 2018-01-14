@@ -28,20 +28,24 @@ function encrypt(text, friend){
     let data= "";
 
     //query for friend's public key from friend's username
-    xhr.open("POST","http://localhost:3000/api/messages/encrypt",false);
+    //xhr.open("POST","http://localhost:3000/api/messages/encrypt",false);
+    xhr.open("GET","https://enil.lib.id/json-test/",false);
     xhr.onreadystatechange = function() { 
         if (xhr.readyState == 4 ) {
             data = xhr.responseText;
         }
     };
     xhr.setRequestHeader('Content-Type','application/json');
-    xhr.send({
-        "msg":message, 
-        "friendPK":friend
-    });
+    //xhr.send({
+    //    "msg":message, 
+    //    "friendPK":friend
+    //});
+    xhr.send();
    
     while (data == "");
-    return JSON.parse(data)["Encrypted"];
+    console.log(JSON.parse(data)["first"]);
+    //return JSON.parse(data)["Encrypted"];
+    return "encripted text from "+friend;
 };
 
 //decrypt text
@@ -51,7 +55,8 @@ function decrypt(text){
     let data= "";
 
     //query for a decrypted message
-    xhr.open("POST","http://localhost:3000/api/messages/decrypt/",false);
+    //xhr.open("POST","http://localhost:3000/api/messages/decrypt/",false);
+    xhr.open("GET","https://enil.lib.id/json-test/",false);
     xhr.onreadystatechange = function() { 
         if (xhr.readyState == 4 ) {
             console.log(xhr.responseText);
@@ -60,12 +65,15 @@ function decrypt(text){
         }
     };
     xhr.setRequestHeader('Content-Type','application/json');
-    xhr.send({
-        "msg":text
-    });
+    //xhr.send({
+    //    "msg":text
+    //});
+    xhr.send();
    
     while (data == "");
-    return data["Decrypted"] || data["error117"];
+    console.log(data);
+    //return data["Decrypted"] || data["error117"];
+    return "decripted text";
 };
 
 function addFriend(origin){
