@@ -13,7 +13,7 @@ import { PrivateComponent } from './private/private.component';
 
 const appRoutes:Routes = [
   {
-    path: '',
+    path: 'login',
     component: LoginFormComponent
   },
   {
