@@ -12,6 +12,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { ContactTableComponent } from './contact-table/contact-table.component';
+import { GenerateKeyComponent } from './generate-key/generate-key.component';
 
 const appRoutes:Routes = [
   {
@@ -32,7 +33,8 @@ const appRoutes:Routes = [
     DashboardComponent,
     FooterComponent,
     LoginFormComponent,
-    ContactTableComponent
+    ContactTableComponent,
+    GenerateKeyComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
