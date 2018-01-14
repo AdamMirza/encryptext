@@ -9,6 +9,7 @@ import { FooterComponent } from './footer/footer.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { PrivateComponent } from './private/private.component';
 
 const appRoutes:Routes = [
   {
@@ -28,7 +29,8 @@ const appRoutes:Routes = [
     LoginFormComponent,
     FooterComponent,
     DashboardComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    PrivateComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
