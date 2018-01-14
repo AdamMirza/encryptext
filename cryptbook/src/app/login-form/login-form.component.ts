@@ -24,7 +24,7 @@ export class LoginFormComponent implements OnInit {
     if(username == 'admin' && password == 'admin')
       this.router.navigate(['dashboard']);
 
-    var body = 'username=' + username + '&password=' + password;
+    /*var body = 'username=' + username + '&password=' + password;
     var headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
 
@@ -38,6 +38,6 @@ export class LoginFormComponent implements OnInit {
               this.router.navigate(['dashboard']);
         }, error => {
             console.log(JSON.stringify(error.json()));
-        });
+        });*/
   }
 }
