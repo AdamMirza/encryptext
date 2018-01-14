@@ -37,8 +37,17 @@ router.get("/api", function(req, res) {
 
 // Connect to the db
 
+<<<<<<< HEAD
 router.get("/test", async function(req, res) {
   let key = await keyGen.newKeyPair();
+=======
+router.get('/api/generateKey/:username/:email',async function(req, res) {
+  let options = {
+    'username':req.params.username,
+    'email':req.params.email
+  }
+  let key = await keyGen.newKeyPair(options);
+>>>>>>> aa9dc407270f3f2de6f23c81395728123973a0bb
   privkey = key.privateKeyArmored; // '-----BEGIN PGP PRIVATE KEY BLOCK ... '
   pubkey = key.publicKeyArmored; // '-----BEGIN PGP PUBLIC KEY BLOCK ... '
   let data = {

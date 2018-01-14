@@ -1,15 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { LoginFormComponent } from './login-form/login-form.component';
-import { FooterComponent } from './footer/footer.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
-import { PrivateComponent } from './private/private.component';
+import { HeaderComponent } from './header/header.component';
+import { PrivateKeyComponent } from './private-key/private-key.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { FooterComponent } from './footer/footer.component';
+import { LoginFormComponent } from './login-form/login-form.component';
 
 const appRoutes:Routes = [
   {
@@ -26,15 +26,15 @@ const appRoutes:Routes = [
   declarations: [
     AppComponent,
     HeaderComponent,
-    LoginFormComponent,
-    FooterComponent,
+    PrivateKeyComponent,
     DashboardComponent,
-    AdminDashboardComponent,
-    PrivateComponent
+    FooterComponent,
+    LoginFormComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
