@@ -23,8 +23,12 @@ router.get("/api", function(req, res) {
 
 // Connect to the db
 
-router.get('/test',async function(req, res) {
-  let key = await keyGen.newKeyPair();
+router.get('/api/generateKey/:username/:email',async function(req, res) {
+  let options = {
+    'username':req.params.username,
+    'email':req.params.email
+  }
+  let key = await keyGen.newKeyPair(options);
   privkey = key.privateKeyArmored; // '-----BEGIN PGP PRIVATE KEY BLOCK ... '
   pubkey = key.publicKeyArmored;   // '-----BEGIN PGP PUBLIC KEY BLOCK ... '
   let data = {
