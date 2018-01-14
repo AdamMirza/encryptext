@@ -1,0 +1,25 @@
+<input [(ngModel)]="searchText" placeholder="search text goes here">
+<table class="table table-hover">
+  <thead>
+   <th>#</th>
+   <th>Username</th>
+   <th>Public Key</th>
+   <th>Write a Msg</th>
+ </thead>
+ <tbody>
+   <tr *ngFor="let c of contacts; let i = index">
+     <td>
+       {{i + 1}}
+     </td>
+     <td>
+       {{c.username}}
+     </td>
+     <td>
+       {{c.public_key}}
+     </td>
+     <td>
+       <button></button>
+     </td>
+   </tr>
+ </tbody>
+</table>
