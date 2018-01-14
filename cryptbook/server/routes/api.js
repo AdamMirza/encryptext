@@ -37,17 +37,12 @@ router.get("/api", function(req, res) {
 
 // Connect to the db
 
-<<<<<<< HEAD
-router.get("/test", async function(req, res) {
-  let key = await keyGen.newKeyPair();
-=======
 router.get('/api/generateKey/:username/:email',async function(req, res) {
   let options = {
     'username':req.params.username,
     'email':req.params.email
   }
   let key = await keyGen.newKeyPair(options);
->>>>>>> aa9dc407270f3f2de6f23c81395728123973a0bb
   privkey = key.privateKeyArmored; // '-----BEGIN PGP PRIVATE KEY BLOCK ... '
   pubkey = key.publicKeyArmored; // '-----BEGIN PGP PUBLIC KEY BLOCK ... '
   let data = {
@@ -66,6 +61,7 @@ router.get("/api/Users/:username", function(req, res) {
   };
 
   MongoClient.connect(url, (err, db) => {
+    console.log(1);
     if (err) {
       res.send("Error connecting " + err);
       return;
@@ -79,13 +75,14 @@ router.get("/api/Users/:username", function(req, res) {
         if (err) {
           throw err;
         }
-        data["_id"] = result._id;
-        data["public_key"] = result.public_key;
-        data["contacts"] = result.contacts;
+        console.log(result[0]);
+        data["_id"] = result[0]._id;
+        data["public_key"] = result[0].public_key;
+        data["contacts"] = result[0].contacts;
+        res.json(data);
       });
     //res.send("connected successfully to database");
   });
-  res.json(data);
   //res.send(data);
 });
 
