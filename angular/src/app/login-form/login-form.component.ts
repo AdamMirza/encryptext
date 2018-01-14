@@ -50,11 +50,7 @@ export class LoginFormComponent implements OnInit {
     }).subscribe(
       res => {
         console.log('login succesful');
-        console.log(res);
-        var d = new Date();
-        d.setTime(d.getTime() + (3 * 24 * 60 * 60 * 1000));
-        var expires = "; expires=" + d.toUTCString();
-        document.cookie = "session="+JSON.stringify(res) + expires + "; path=/"
+        localStorage.setItem('session', JSON.stringify(res))
         this.router.navigate(['dashboard']);
       },
       err => {

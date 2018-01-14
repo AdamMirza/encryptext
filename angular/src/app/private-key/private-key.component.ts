@@ -24,6 +24,7 @@ export class PrivateKeyComponent implements OnInit {
 
   togglePkey() {
     this.isNotVisible = !this.isNotVisible;
+  
     /* Get the private key from Mongo */
     /*var body = 'username=' + username + '&password=' + password;
     var headers = new Headers();

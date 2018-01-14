@@ -2,10 +2,16 @@
   <a class="navbar-brand mr-auto" href="#">encryptext</a>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+
+        function signOut() {
+        }
+        </script>
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">Sign Up</a>
+        <a class="nav-link" href="javascript:(function()%7Bvar%20cookies%20%3D%20document.cookie.split(%22%3B%22)%3Bfor%20(var%20i%20%3D%200%3B%20i%20%3C%20cookies.length%3B%20i%2B%2B)%20%7Bvar%20cookie%20%3D%20cookies%5Bi%5D%3Bvar%20eqPos%20%3D%20cookie.indexOf(%22%3D%22)%3Bvar%20name%20%3D%20eqPos%20%3E%20-1%20%3F%20cookie.substr(0%2C%20eqPos)%20%3A%20cookie%3Bdocument.cookie%20%3D%20name%20%2B%20%22%3D%3Bexpires%3DThu%2C%2001%20Jan%201970%2000%3A00%3A00%20GMT%22%3B%7D%7D)()">Sign Out</a>
       </li>
       <!--
       <li class="nav-item dropdown">
