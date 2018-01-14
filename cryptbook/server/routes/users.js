@@ -8,6 +8,8 @@ const keyGen = require('../../modules/keyGen')
 var bodyParser = require('body-parser')
 
 router.post('/login',function(req, res){
-  console.log(1);
-  res.status(200).send('Login successful.')
+  res.status(200).json({})
 })
+
+
+module.exports = router;

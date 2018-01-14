@@ -2,7 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const http = require('http');
+const cors = require('cors')
 const app = express();
+
+//Allow CORS
+app.use(cors())
 
 // Parsers
 app.use(bodyParser.json());
@@ -18,6 +22,7 @@ app.use(express.static(path.join(__dirname, 'dist')));
 
 // Send all other requests to the Angular app
 app.use(require('./server/routes/api'))
+app.use(require('./server/routes/users'))
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
