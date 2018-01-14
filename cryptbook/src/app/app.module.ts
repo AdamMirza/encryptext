@@ -14,7 +14,7 @@ const appRoutes:Routes = [
   {
     path: '',
     component: LoginFormComponent
-  }
+  },
   {
     path: 'dashboard',
     component: DashboardComponent
