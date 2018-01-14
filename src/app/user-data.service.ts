@@ -7,6 +7,7 @@ export class UserDataService {
   constructor() { }
 
   addContact(user: User) {
+    
   }
 
 }
