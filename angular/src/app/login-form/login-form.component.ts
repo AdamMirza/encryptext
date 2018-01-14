@@ -51,8 +51,11 @@ export class LoginFormComponent implements OnInit {
       }
     );
 
-    if(username == 'admin' && password == 'admin')
+    if(username == 'admin' && password == 'admin') {
+      let elem: HTMLElement = document.getElementById('snd-header');
+      elem.setAttribute("style", "display:none;");
       this.router.navigate(['dashboard']);
+    }
 
     /*var body = 'username=' + username + '&password=' + password;
     var headers = new Headers();

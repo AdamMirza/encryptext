@@ -10,6 +10,7 @@ import { PrivateKeyComponent } from './private-key/private-key.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { SecondHeaderComponent } from './second-header/second-header.component';
 
 const appRoutes:Routes = [
   {
@@ -29,7 +30,8 @@ const appRoutes:Routes = [
     PrivateKeyComponent,
     DashboardComponent,
     FooterComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    SecondHeaderComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
