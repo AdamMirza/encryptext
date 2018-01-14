@@ -9,7 +9,8 @@
             "matches" : [
                 "*://*/*"
             ],
-            "popup": ["popup.html"]
+            "popup": "popup.html", 
+            "all_frames": true
         }
     ],
 	"permissions": [
