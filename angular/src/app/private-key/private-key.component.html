@@ -1,17 +1,17 @@
-<div (click)=togglePkey()>
+<button type="button" class="btn btn-success" id="priv-key" (click)=togglePkey()>
   <header>
     Private Key
   </header>
-  <div *ngIf="isVisible; else visibleSecret">
-    <span *ngFor="let key of keyChar">
-      •
+  <div *ngIf="isNotVisible; else visibleSecret">
+    <span *ngFor="let keyChar of keyCharArr">
+      &#8226;
     </span>
   </div>
   <ng-template #visibleSecret>
     <div>
-      <span *ngFor="let keyChar of keyCharArr">
+      <a *ngFor="let keyChar of keyCharArr">
         {{keyChar.char}}
-      </span>
+      </a>
     </div>
   </ng-template>
-</div>
+</button>
