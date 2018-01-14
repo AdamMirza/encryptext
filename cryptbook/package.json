@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "concurrently \"node ./server.js\" \"cd ../angular && sudo ng serve --host 0.0.0.0\"",
+    "start": "concurrently \"node ./server.js\" \"cd ../angular && npm start\"",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
