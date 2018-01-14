@@ -1,13 +1,13 @@
 const openpgp = require("openpgp");
 //encription module: making jibberish
-//return : encripted message 
+//return : encripted message
 //requires : plain text, public key of friend, friend username
-exports.encrypt = function(msg,friend, friendPK){
+exports.encrypt = function(msg, friendPK){
     const options = {
-        data: msg, 
+        data: msg,
         publicKeys : openpgp.readArmored(friendPK).keys
     }
     openpgp.encrypt(options).then((cipherText)=>{
-        return cipherText.data+"@"+friend; 
+        return cipherText.data+"@"+friend;
     });
 }

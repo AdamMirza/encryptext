@@ -7,7 +7,7 @@ function newKeyPair(data){
     passphrase: 'super long and hard to guess secret'         // protects the private key
   };
 
-  return openpgp.generateKey(options);
+  return openpgp.generateKey(options)
 }
 
 module.exports = {
