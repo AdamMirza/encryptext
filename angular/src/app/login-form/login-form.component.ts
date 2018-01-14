@@ -1,7 +1,7 @@
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
@@ -20,12 +20,12 @@ export class LoginFormComponent implements OnInit {
     console.log(e);
     var username = e.target.elements[0].value;
     var password = e.target.elements[1].value;
-    console.log(username,password);
+    console.log(username, password);
 
     // GET
     // change URL
     // change UserObject interface (below) to include more variables
-    this.http.get<UserObject>('https://api.github.com/users/seeschweiler').subscribe(
+    /*this.http.get<UserObject>('https://api.github.com/users/seeschweiler').subscribe(
       data => {
         // Do logic in here
         console.log("You are in the request");
@@ -35,27 +35,24 @@ export class LoginFormComponent implements OnInit {
       err => {
         console.log("Error occured.")
       }
-    );
+    );*/
 
     // POST
-    const req = this.http.post('http://jsonplaceholder.typicode.com/posts', {
-      username: 'foo',
-      password: 'bar',
-      userId: 1
-    }).subscribe(
+    const req = this.http.post('http://localhost:3000/login',
+    {
+      username: username,
+      password: password
+    }
+  ).subscribe(
       res => {
-        console.log(res);
+        console.log('login succesful');
+        this.router.navigate(['dashboard']);
       },
       err => {
-        console.log("Error occured");
+        console.log('login failed');
+        console.log(err);
       }
     );
-
-    if(username == 'admin' && password == 'admin') {
-      let elem: HTMLElement = document.getElementById('snd-header');
-      elem.setAttribute("style", "display:none;");
-      this.router.navigate(['dashboard']);
-    }
 
     /*var body = 'username=' + username + '&password=' + password;
     var headers = new Headers();
