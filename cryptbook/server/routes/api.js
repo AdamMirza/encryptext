@@ -94,6 +94,7 @@ router.get("/api/Users/:username", function(req, res) {
 router.post("/api/messages/encrypt",async function(req,res){
     let friendPK = req.body.friendPK;
     let message = await encrypt(req.body.msg,friendPK)
+    
     res.json({"Encrypted": message});
 });
 
