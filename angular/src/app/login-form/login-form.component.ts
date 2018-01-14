@@ -1,7 +1,13 @@
-
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+import {
+  Router
+} from '@angular/router';
+import {
+  HttpClient
+} from '@angular/common/http';
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
@@ -9,7 +15,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LoginFormComponent implements OnInit {
 
-  constructor(private router:Router, private http:HttpClient) { }
+  constructor(private router: Router, private http: HttpClient) {}
 
   ngOnInit() {
     console.log('hit');
@@ -38,14 +44,17 @@ export class LoginFormComponent implements OnInit {
     );*/
 
     // POST
-    const req = this.http.post('http://localhost:3000/login',
-    {
+    const req = this.http.post('http://localhost:3000/login', {
       username: username,
       password: password
-    }
-  ).subscribe(
+    }).subscribe(
       res => {
         console.log('login succesful');
+        console.log(res);
+        var d = new Date();
+        d.setTime(d.getTime() + (3 * 24 * 60 * 60 * 1000));
+        var expires = "; expires=" + d.toUTCString();
+        document.cookie = "session="+JSON.stringify(res) + expires + "; path=/"
         this.router.navigate(['dashboard']);
       },
       err => {

@@ -7,7 +7,7 @@ const router = express.Router();
 const keyGen = require('../../modules/keyGen')
 var bodyParser = require('body-parser')
 var url ="mongodb://get-secured:ouwnhEPf2VfMgfQG@cluster0-shard-00-00-bwprg.mongodb.net:27017,cluster0-shard-00-01-bwprg.mongodb.net:27017,cluster0-shard-00-02-bwprg.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin"
-
+let session = require('express-session')
 
 router.post('/login',function(req, res){
   let username = req.body.username
@@ -19,10 +19,12 @@ router.post('/login',function(req, res){
     var db = db.db("EncrytText");
     db.collection('Users').findOne({'username':username},function(err, data){
       console.log(data)
-      if(data.password === password)
-        res.status(200).json({})
-      else
+      if(data.password === password){
+        delete data.password;
+        res.status(200).json({'user':data})
+      }else{
         res.status(401).json({})
+      }
     })
   })
 })

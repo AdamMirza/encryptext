@@ -91,30 +91,19 @@ router.get("/api/Users/:username", function(req, res) {
 
 //Encrypt a Message: make plain text a jibberish
 //requires: msg + friendName
-router.post("/api/messages/encrypt",function(req,res){
-    let friend = req.body.friendName; 
-    let friendPK = "";
-    MongoClient.connect(url, (err,db) => {
-        console.log("got in database");
-        if (err) {res.json({"error95": "problem querying server"}); return;}
-        var db  = db.db("EncryptText");
-        var query = {username : req.body.friendName}; 
-        db.collection("Users")
-          .find(query)
-          .toArray(function(err,result) {
-                if (err) { res.json({"error101": "problem querying server"}); return; }
-                console.log(result[0]);
-                friendPK = result[0].public_key; 
-                res.json({"Encrypted": encrypt(req.body.msg,friend,friendPK)});
-          });
-    });
+router.post("/api/messages/encrypt",async function(req,res){
+    let friendPK = req.body.friendPK;
+    let message = await encrypt(req.body.msg,friendPK)
+    
+    res.json({"Encrypted": message});
 });
 
 //Decrypt a Message: make jibberish a plain clean text
 //requires: msg (private key in session)
-router.post("/api/messages/decrypt",function(req,res){
+router.post("/api/messages/decrypt",async function(req,res){
     if (req.session.user){
-        res.json({"Decrypted": decrypt(req.body.msg,req.session.user.private_key)});
+      let message = await decrypt.decrypt(req.body.msg,req.session.user.private_key)
+        res.json({"Decrypted": message});
     } else {
         res.json({"error117": "problem processing decryption"});
     }
