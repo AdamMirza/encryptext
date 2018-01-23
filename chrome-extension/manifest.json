@@ -7,7 +7,7 @@
         {
             "js": ["content.js"],
             "matches" : [
-                "*://*"
+                "<all_urls>"
             ],
             "popup": "popup.html", 
             "all_frames": true
